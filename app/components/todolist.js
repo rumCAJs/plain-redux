@@ -42,23 +42,19 @@ TodoList.prototype.shouldComponentUpdate = function(newTodos) {
     return this.todos != newTodos;
 }
 
-TodoList.prototype.addRefs = function(name, obj) {
-    this.refs[name] = obj;
-}
-
 TodoList.prototype.render = function() {
     let ul = document.createElement("div");
     ul.className = "todo-list";
 
     this.todos.forEach((todo, index) => {
         let li = document.createElement("div");
-        li.className = "todo-item" + (todo.isActive ? " active" : "");
+        li.className = "todo-item" + (todo.isDone ? " active" : "");
 
         let checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.dataset.index = index;
         checkbox.dataset.name = "todo-item-isactive";
-        if(todo.isActive) {
+        if(todo.isDone) {
             checkbox.checked = true;
         }
 

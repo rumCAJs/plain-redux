@@ -11,8 +11,7 @@ function todoItems(state = initialState, action) {
     case ADD_TODO:
         let newTodo = {
             title: action.title,
-            id: action.id,
-            isActive: true
+            isDone: false
         };
         return Object.assign({}, state, {todos: [...state.todos, newTodo]});
     case REMOVE_TODO:
@@ -20,7 +19,7 @@ function todoItems(state = initialState, action) {
     case CHANGE_TODO_STATE:
         return Object.assign({}, state, {todos: state.todos.map((todo, index) => {
                 if( index === action.index ) {
-                    return Object.assign({}, todo, {isActive: !todo.isActive});
+                    return Object.assign({}, todo, {isDone: !todo.isDone});
                 }
                 return todo;
             })
