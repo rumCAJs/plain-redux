@@ -17,7 +17,8 @@ AddTodo.prototype.addHandlers = function() {
         e.preventDefault();
         this.store.dispatch({
             type: ADD_TODO,
-            title: this.refs.title.value
+            title: this.refs.title.value,
+            index: this.store.getState().todos.length
         });
         this.refs.title.value = "";
     });

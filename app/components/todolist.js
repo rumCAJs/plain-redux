@@ -1,10 +1,12 @@
 import { CHANGE_TODO_STATE, REMOVE_TODO } from '../state/actions'
+import TodoItem from './todoitem'
 
 export default function TodoList(store, target) {
     this.store = store;
     this.target = target;
 
     this.refs = {};
+    this.todoItems = [];
 
     this.container = document.createElement("div");
     this.target.appendChild(this.container);
@@ -47,29 +49,7 @@ TodoList.prototype.render = function() {
     ul.className = "todo-list";
 
     this.todos.forEach((todo, index) => {
-        let li = document.createElement("div");
-        li.className = "todo-item" + (todo.isDone ? " active" : "");
-
-        let checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.dataset.index = index;
-        checkbox.dataset.name = "todo-item-isactive";
-        if(todo.isDone) {
-            checkbox.checked = true;
-        }
-
-        let text = document.createTextNode(todo.title);
-
-        let span = document.createElement("span");
-        span.dataset.name = "todo-item-delete";
-        span.dataset.index = index;
-        span.className = "delete-todo";
-        span.textContent = "x";
-
-        li.appendChild(checkbox);
-        li.appendChild(text);
-        li.appendChild(span);
-        ul.appendChild(li);
+        this.todoItems.push(new TodoItem(todo, ul));
     });
 
     this.container.innerHTML = "";

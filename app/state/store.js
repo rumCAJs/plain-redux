@@ -11,7 +11,8 @@ function todoItems(state = initialState, action) {
     case ADD_TODO:
         let newTodo = {
             title: action.title,
-            isDone: false
+            isDone: false,
+            index: action.index
         };
         return Object.assign({}, state, {todos: [...state.todos, newTodo]});
     case REMOVE_TODO:
