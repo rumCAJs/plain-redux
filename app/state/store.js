@@ -16,10 +16,10 @@ function todoItems(state = initialState, action) {
         };
         return Object.assign({}, state, {todos: [...state.todos, newTodo]});
     case REMOVE_TODO:
-        return Object.assign({}, state, {todos: state.todos.filter((todo, index) => index != action.index)});
+        return Object.assign({}, state, {todos: state.todos.filter((todo, index) => todo.index != action.index)});
     case CHANGE_TODO_STATE:
         return Object.assign({}, state, {todos: state.todos.map((todo, index) => {
-                if( index === action.index ) {
+                if( todo.index === action.index ) {
                     return Object.assign({}, todo, {isDone: !todo.isDone});
                 }
                 return todo;
