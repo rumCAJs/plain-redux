@@ -1,0 +1,24 @@
+body {
+    font-family: sans-serif;
+    margin: 0 auto;
+    width: 800px;
+}
+.todo-item {
+    margin: 10px 0;
+    max-width: 250px;
+    border-radius: 5px;
+    border: 1px solid #2ECC40;
+    padding: 3px 5px;
+}
+.todo-item.active {
+    background-color: #2ECC40;
+    color: #003316;
+}
+.todo-item .delete-todo {
+    cursor: pointer;
+    font-size: .65;
+    background: #FF4136;
+    padding: 0 2px;
+    border-radius: 4px;
+    color: #fff;
+}
